@@ -4,4 +4,4 @@
     3. Content Security Policy (Secure JS and CSS)
     4. CSS Threat
     5. CORS (Cross origin resource sharing)
-    6. clickjacking
+    6. Clickjacking
