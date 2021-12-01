@@ -2,11 +2,12 @@ const userMessages = [];
 
 const userMessageForm = document.querySelector('form');
 const userMessagesList = document.querySelector('ul');
+const targetWebsite = document.querySelector('#target_website');
 
 function renderMessages() {
-    let messageItems = '';
-    for (const message of userMessages) {
-        messageItems = `
+  let messageItems = '';
+  for (const message of userMessages) {
+    messageItems = `
       ${messageItems}
       <li class="message-item">
         <div class="message-image">
@@ -15,37 +16,38 @@ function renderMessages() {
         <p>${message.text}</p>
       </li>
     `;
-    }
+  }
 
-    userMessagesList.innerHTML = messageItems;
+  userMessagesList.innerHTML = messageItems;
 }
 
 function formSubmitHandler(event) {
-    event.preventDefault();
-    const userMessageInput = event.target.querySelector('textarea');
-    const messageImageInput = event.target.querySelector('input');
-    const userMessage = userMessageInput.value;
-    const imageUrl = messageImageInput.value;
+  event.preventDefault();
+  const userMessageInput = event.target.querySelector('textarea');
+  const messageImageInput = event.target.querySelector('input');
+  const userMessage = userMessageInput.value;
+  const imageUrl = messageImageInput.value;
 
-    if (
-        !userMessage ||
-        !imageUrl ||
-        userMessage.trim().length === 0 ||
-        imageUrl.trim().length === 0
-    ) {
-        alert('Please insert a valid message and image.');
-        return;
-    }
+  if (
+    !userMessage ||
+    !imageUrl ||
+    userMessage.trim().length === 0 ||
+    imageUrl.trim().length === 0
+  ) {
+    alert('Please insert a valid message and image.');
+    return;
+  }
 
-    userMessages.push({
-        text: userMessage,
-        image: imageUrl,
-    });
+  userMessages.push({
+    text: userMessage,
+    image: imageUrl,
+  });
 
-    userMessageInput.value = '';
-    messageImageInput.value = '';
+  userMessageInput.value = '';
+  messageImageInput.value = '';
 
-    renderMessages();
+  renderMessages();
 }
 
 userMessageForm.addEventListener('submit', formSubmitHandler);
+

